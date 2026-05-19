@@ -1,0 +1,18 @@
+# Python Virtual Environments
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Sensitive Environment Keys
+.env
+.env.local
+
+# Node/Next.js dependencies
+node_modules/
+.next/
+dist/
+
+# Operating System garbage files
+.DS_Store
+Thumbs.db

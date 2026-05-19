@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # 1. DATABASE
+  db:
+    image: postgres:15
+    volumes:
+      - production_postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=your_ultra_secure_password_here
+      - POSTGRES_DB=medisync_db
+    # Notice: We don't expose ports to the public internet for security!
+    # Only our backend container can talk to it internally on port 5432.
+
+  # 2. FASTAPI BACKEND
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    environment:
+      - MISTRAL_API_KEY=your_actual_mistral_key_here
+      - DATABASE_URL=postgresql://postgres:your_ultra_secure_password_here@db:5432/medisync_db
+    depends_on:
+      - db
+
+  # 3. NEXT.JS FRONTEND
+  frontend:
+    build:
+      context: ./frontend # Points to your frontend directory
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://your_droplet_ip:8001
+
+volumes:
+  production_postgres_data:
