@@ -18,7 +18,7 @@ Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], # Your Next.js URL
+    allow_origins=["http://localhost:3000", "http://46.101.155.231:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
