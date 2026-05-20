@@ -10,10 +10,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=your_ultra_secure_password_here
       - POSTGRES_DB=medisync_db
-    # Notice: We don't expose ports to the public internet for security!
-    # Only our backend container can talk to it internally on port 5432.
 
-  # 2. FASTAPI BACKEND
   backend:
     build: 
       context: .
@@ -29,12 +26,12 @@ services:
   # 3. NEXT.JS FRONTEND
   frontend:
     build:
-      context: ./frontend # Points to your frontend directory
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://your_droplet_ip:8001
+      - NEXT_PUBLIC_API_URL=http://46.101.155.231:8001
 
 volumes:
   production_postgres_data:
