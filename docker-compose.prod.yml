@@ -18,8 +18,8 @@ services:
     ports:
       - "8001:8000"
     environment:
-      - MISTRAL_API_KEY=your_actual_mistral_key_here
-      - DATABASE_URL=postgresql://postgres:your_ultra_secure_password_here@db:5432/medisync_db
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
     depends_on:
       - db
 
