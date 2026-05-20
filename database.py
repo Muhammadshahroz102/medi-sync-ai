@@ -1,17 +1,12 @@
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
 
-load_dotenv()
-
-DATABASE_URL = os.getenv(
-    "DATABASE_URL", 
-    "postgresql://postgres:your_ultra_secure_password_here@db:5432/medisync_db"
-)
+# No load_dotenv()! Read directly from the container environment
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL is None:
-    raise ValueError("DATABASE_URL is missing")
+    raise ValueError("DATABASE_URL environment variable is completely missing")
 
 engine = create_engine(DATABASE_URL)
 
