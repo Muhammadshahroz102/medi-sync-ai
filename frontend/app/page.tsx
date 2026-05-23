@@ -87,7 +87,7 @@ export default function Home() {
         <header className="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8">
           <h2 className="text-lg font-semibold text-slate-700">AI Clinical Scribe Studio</h2>
           <div className="flex items-center space-x-4">
-            <span className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium">Dr. Shahroz Active</span>
+            <span className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium">Dr. Malik Hamza, BasketBall waly</span>
           </div>
         </header>
         <div className="flex-1 flex overflow-hidden p-6 gap-6">
